@@ -1,0 +1,18 @@
+name: iPad app
+on:
+  push:
+    paths: ['ipad/**', '.github/workflows/ipad.yml']
+  pull_request:
+    paths: ['ipad/**', '.github/workflows/ipad.yml']
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: macos-14
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test protocol and PID core
+        run: swift test --package-path ipad/OBDCore
+      - name: Build iPad simulator app
+        run: xcodebuild -project ipad/OBD2Dash.xcodeproj -scheme OBD2Dash -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' CODE_SIGNING_ALLOWED=NO build

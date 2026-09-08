@@ -1,0 +1,55 @@
+// !$*UTF8*$!
+{
+archiveVersion = 1; classes = {}; objectVersion = 56;
+objects = {
+00000000000000000000001E = {isa = PBXBuildFile; fileRef = 000000000000000000000014; };
+00000000000000000000001F = {isa = PBXBuildFile; fileRef = 000000000000000000000015; };
+000000000000000000000020 = {isa = PBXBuildFile; fileRef = 000000000000000000000016; };
+000000000000000000000021 = {isa = PBXBuildFile; fileRef = 000000000000000000000017; };
+000000000000000000000014 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBD2DashApp.swift; sourceTree = "<group>"; };
+000000000000000000000015 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardModel.swift; sourceTree = "<group>"; };
+000000000000000000000016 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+000000000000000000000017 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Telemetry.swift; sourceTree = "<group>"; };
+000000000000000000000007 = {isa = PBXFileReference; explicitFileType = wrapper.application; path = OBD2Dash.app; sourceTree = BUILT_PRODUCTS_DIR; };
+000000000000000000000002 = {isa = PBXGroup; children = (00000000000000000000000A, 00000000000000000000000B, 00000000000000000000000C); sourceTree = "<group>"; };
+00000000000000000000000A = {isa = PBXGroup; children = (000000000000000000000014,000000000000000000000015,000000000000000000000016); path = OBD2Dash; sourceTree = "<group>"; };
+00000000000000000000000B = {isa = PBXGroup; children = (000000000000000000000017); path = OBDCore/Sources/OBDCore; sourceTree = "<group>"; };
+00000000000000000000000C = {isa = PBXGroup; children = (000000000000000000000007); name = Products; sourceTree = "<group>"; };
+000000000000000000000003 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (00000000000000000000001E,00000000000000000000001F,000000000000000000000020,000000000000000000000021); runOnlyForDeploymentPostprocessing = 0; };
+000000000000000000000004 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+000000000000000000000005 = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+000000000000000000000006 = {isa = PBXNativeTarget; buildConfigurationList = 000000000000000000000008; buildPhases = (000000000000000000000003,000000000000000000000004,000000000000000000000005); buildRules = (); dependencies = (); name = OBD2Dash; productName = OBD2Dash; productReference = 000000000000000000000007; productType = "com.apple.product-type.application"; };
+000000000000000000000001 = {isa = PBXProject; attributes = {BuildIndependentTargetsInParallel = YES; LastUpgradeCheck = 1600; TargetAttributes = {000000000000000000000006 = {CreatedOnToolsVersion = 16.0; }; }; }; buildConfigurationList = 000000000000000000000009; compatibilityVersion = "Xcode 14.0"; developmentRegion = en; hasScannedForEncodings = 0; knownRegions = (en,Base); mainGroup = 000000000000000000000002; productRefGroup = 00000000000000000000000C; projectDirPath = ""; projectRoot = ""; targets = (000000000000000000000006); };
+000000000000000000000008 = {isa = XCConfigurationList; buildConfigurations = (000000000000000000000028,000000000000000000000029); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+000000000000000000000009 = {isa = XCConfigurationList; buildConfigurations = (00000000000000000000002A,00000000000000000000002B); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+000000000000000000000028 = {isa = XCBuildConfiguration; buildSettings = {
+CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; GENERATE_INFOPLIST_FILE = YES;
+INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "OBD2Dash connects to your nearby vehicle scanner to display live diagnostic readings.";
+INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+IPHONEOS_DEPLOYMENT_TARGET = 17.0; MARKETING_VERSION = 1.0;
+PRODUCT_BUNDLE_IDENTIFIER = com.ethanpope.obd2dash;
+PRODUCT_NAME = "$(TARGET_NAME)"; SDKROOT = iphoneos;
+SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+SUPPORTS_MACCATALYST = NO; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = 2;
+SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+}; name = Debug; };
+000000000000000000000029 = {isa = XCBuildConfiguration; buildSettings = {
+CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; GENERATE_INFOPLIST_FILE = YES;
+INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "OBD2Dash connects to your nearby vehicle scanner to display live diagnostic readings.";
+INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+IPHONEOS_DEPLOYMENT_TARGET = 17.0; MARKETING_VERSION = 1.0;
+PRODUCT_BUNDLE_IDENTIFIER = com.ethanpope.obd2dash;
+PRODUCT_NAME = "$(TARGET_NAME)"; SDKROOT = iphoneos;
+SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+SUPPORTS_MACCATALYST = NO; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = 2;
+SWIFT_OPTIMIZATION_LEVEL = "-O";
+}; name = Release; };
+00000000000000000000002A = {isa = XCBuildConfiguration; buildSettings = {CLANG_ENABLE_MODULES = YES; SWIFT_VERSION = 5.0; SDKROOT = iphoneos; IPHONEOS_DEPLOYMENT_TARGET = 17.0; }; name = Debug; };
+00000000000000000000002B = {isa = XCBuildConfiguration; buildSettings = {CLANG_ENABLE_MODULES = YES; SWIFT_VERSION = 5.0; SDKROOT = iphoneos; IPHONEOS_DEPLOYMENT_TARGET = 17.0; }; name = Release; };
+};
+rootObject = 000000000000000000000001;
+}

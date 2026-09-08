@@ -47,8 +47,9 @@ Start at offset zero. Require the same version/kind, ECU, PID, sequence, total l
 
 Notifications are best effort. The 15 ms fragment pacing reduces congestion but does not acknowledge delivery. Use timestamps to mark readings stale. A sequence gap can also reflect samples produced before subscription. Discovery repeats periodically, so a client subscribing late may wait until the next support sweep for all bitmap pages.
 
-A Python reference reassembler is in tools/decode_ble.py; feed one notification hex string per line. The iPad app source was not supplied, so no existing app compatibility is claimed.
+A Python reference reassembler is in tools/decode_ble.py; feed one notification hex string per line. The new native iPad client in ipad/ implements this format. It is a new receiving app, not a claim of compatibility with any earlier unpublished app.
 
 ## Access
 
 This prototype does not enable pairing or encryption. Nearby clients can subscribe to telemetry. Do not transmit identity/location data through this interface without designing appropriate access control.
+

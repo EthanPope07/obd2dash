@@ -74,3 +74,9 @@ Compiled successfully with Espressif Arduino-ESP32 3.3.11 (bundled BLE 3.3.11), 
 - Python BLE decoder suite: 4 tests passed.
 
 No device was flashed. These compile figures do not measure peak runtime RAM. Vehicle/CAN simulator tests and iPad integration remain outstanding; follow docs/VALIDATION.md.
+
+## iPad dashboard
+
+The native SwiftUI receiving app is in [ipad](ipad/README.md). Open ipad/OBD2Dash.xcodeproj on a Mac, select your signing team and run on an iPad with iPadOS 17+. It automatically connects while foregrounded and displays RPM, speed and coolant gauges alongside a searchable list of supported/observed PIDs.
+
+Unknown PIDs are shown as raw bytes, not guessed numbers. The app has an explicitly labeled --demo mode for UI previews. See the app README for build and physical-device validation instructions.

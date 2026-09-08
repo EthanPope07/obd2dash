@@ -10,3 +10,10 @@ __pycache__/
 ~*
 .env*
 secrets.h
+
+# Xcode and Swift build outputs
+DerivedData/
+.build/
+xcuserdata/
+*.xcuserstate
+
