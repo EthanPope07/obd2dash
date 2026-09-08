@@ -1,0 +1,1628 @@
+{
+    "$schema": "https://schemas.kicad.org/drc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-09-07T20:50:45",
+    "ignored_checks": [
+        {
+            "description": "Footprint has no courtyard defined",
+            "key": "missing_courtyard"
+        },
+        {
+            "description": "Track endpoint not centered on via",
+            "key": "track_not_centered_on_via"
+        },
+        {
+            "description": "Tuning profile track geometries",
+            "key": "tuning_profile_track_geometries"
+        },
+        {
+            "description": "Footprint doesn't match symbol's footprint filters",
+            "key": "footprint_filters_mismatch"
+        },
+        {
+            "description": "Footprint component type doesn't match footprint pads",
+            "key": "footprint_type_mismatch"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning"
+    ],
+    "kicad_version": "10.0.4",
+    "schematic_parity": [],
+    "source": "obd2Dash.kicad_pcb",
+    "unconnected_items": [
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "PTH pad 1 [GND] of SW2",
+                    "pos": {
+                        "x": 171.5,
+                        "y": 93.0
+                    },
+                    "uuid": "2dcedefb-19d5-4bea-a483-958c993c0305"
+                },
+                {
+                    "description": "Pad 1 [GND] of C3 on F.Cu",
+                    "pos": {
+                        "x": 175.5,
+                        "y": 92.225
+                    },
+                    "uuid": "e87db687-c7f5-4673-bf59-e79869887bcb"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Pad 1 [+3.3V] of R7 on F.Cu",
+                    "pos": {
+                        "x": 159.0,
+                        "y": 128.35
+                    },
+                    "uuid": "caac35a7-1aa8-451a-a9e5-612a170ed654"
+                },
+                {
+                    "description": "Track [+3.3V] on F.Cu, length 2.7500 mm",
+                    "pos": {
+                        "x": 150.0,
+                        "y": 108.4375
+                    },
+                    "uuid": "f3f01a28-bd3b-4fc9-8751-a5fd81c29bd8"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "PTH pad B5 [Net-(J2-CC2)] of J2",
+                    "pos": {
+                        "x": 137.275,
+                        "y": 134.825
+                    },
+                    "uuid": "71560489-46b7-4ead-aad2-065715d3b95a"
+                },
+                {
+                    "description": "Pad 1 [Net-(J2-CC2)] of R3 on F.Cu",
+                    "pos": {
+                        "x": 140.5,
+                        "y": 125.675
+                    },
+                    "uuid": "646959fe-09d2-4f25-8a35-a319d7c726ea"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        }
+    ],
+    "violations": [
+        {
+            "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1750 mm)",
+            "items": [
+                {
+                    "description": "Track [Net-(U1-EN)] on F.Cu, length 5.7396 mm",
+                    "pos": {
+                        "x": 173.72,
+                        "y": 103.558478
+                    },
+                    "uuid": "81aeb736-785d-4de7-9265-4d28b78ee170"
+                },
+                {
+                    "description": "PTH pad 1 [GND] of SW2",
+                    "pos": {
+                        "x": 171.5,
+                        "y": 99.5
+                    },
+                    "uuid": "87f5229a-d8b1-430a-b319-511488017963"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)",
+            "items": [
+                {
+                    "description": "PTH pad A4 [Net-(U4-EN)] of J2",
+                    "pos": {
+                        "x": 133.875,
+                        "y": 133.475
+                    },
+                    "uuid": "74d0396d-6113-4cb7-8777-897cabb869e2"
+                },
+                {
+                    "description": "PTH pad A1 [GND] of J2",
+                    "pos": {
+                        "x": 133.025,
+                        "y": 133.475
+                    },
+                    "uuid": "1ad43528-4e3a-4b23-ab10-2b0a8d3ea00b"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)",
+            "items": [
+                {
+                    "description": "PTH pad A4 [Net-(U4-EN)] of J2",
+                    "pos": {
+                        "x": 133.875,
+                        "y": 133.475
+                    },
+                    "uuid": "74d0396d-6113-4cb7-8777-897cabb869e2"
+                },
+                {
+                    "description": "PTH pad A5 [Net-(J2-CC1)] of J2",
+                    "pos": {
+                        "x": 134.725,
+                        "y": 133.475
+                    },
+                    "uuid": "28c1cfbf-9ed2-4da4-9596-00697b376175"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)",
+            "items": [
+                {
+                    "description": "PTH pad A4 [Net-(U4-EN)] of J2",
+                    "pos": {
+                        "x": 133.875,
+                        "y": 133.475
+                    },
+                    "uuid": "74d0396d-6113-4cb7-8777-897cabb869e2"
+                },
+                {
+                    "description": "PTH pad A5 [Net-(J2-CC1)] of J2",
+                    "pos": {
+                        "x": 134.725,
+                        "y": 133.475
+                    },
+                    "uuid": "28c1cfbf-9ed2-4da4-9596-00697b376175"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)",
+            "items": [
+                {
+                    "description": "PTH pad A4 [Net-(U4-EN)] of J2",
+                    "pos": {
+                        "x": 133.875,
+                        "y": 133.475
+                    },
+                    "uuid": "74d0396d-6113-4cb7-8777-897cabb869e2"
+                },
+                {
+                    "description": "PTH pad A1 [GND] of J2",
+                    "pos": {
+                        "x": 133.025,
+                        "y": 133.475
+                    },
+                    "uuid": "1ad43528-4e3a-4b23-ab10-2b0a8d3ea00b"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)",
+            "items": [
+                {
+                    "description": "PTH pad A6 [/D+] of J2",
+                    "pos": {
+                        "x": 135.575,
+                        "y": 133.475
+                    },
+                    "uuid": "c6fe0073-9a7c-4631-a95b-f6637b29bba1"
+                },
+                {
+                    "description": "PTH pad A5 [Net-(J2-CC1)] of J2",
+                    "pos": {
+                        "x": 134.725,
+                        "y": 133.475
+                    },
+                    "uuid": "28c1cfbf-9ed2-4da4-9596-00697b376175"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)",
+            "items": [
+                {
+                    "description": "PTH pad A6 [/D+] of J2",
+                    "pos": {
+                        "x": 135.575,
+                        "y": 133.475
+                    },
+                    "uuid": "c6fe0073-9a7c-4631-a95b-f6637b29bba1"
+                },
+                {
+                    "description": "PTH pad A5 [Net-(J2-CC1)] of J2",
+                    "pos": {
+                        "x": 134.725,
+                        "y": 133.475
+                    },
+                    "uuid": "28c1cfbf-9ed2-4da4-9596-00697b376175"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)",
+            "items": [
+                {
+                    "description": "PTH pad A7 [/D-] of J2",
+                    "pos": {
+                        "x": 136.425,
+                        "y": 133.475
+                    },
+                    "uuid": "692cf70e-5eb6-4b8c-9ec3-553a19ad313f"
+                },
+                {
+                    "description": "PTH pad A6 [/D+] of J2",
+                    "pos": {
+                        "x": 135.575,
+                        "y": 133.475
+                    },
+                    "uuid": "c6fe0073-9a7c-4631-a95b-f6637b29bba1"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)",
+            "items": [
+                {
+                    "description": "PTH pad A7 [/D-] of J2",
+                    "pos": {
+                        "x": 136.425,
+                        "y": 133.475
+                    },
+                    "uuid": "692cf70e-5eb6-4b8c-9ec3-553a19ad313f"
+                },
+                {
+                    "description": "PTH pad A6 [/D+] of J2",
+                    "pos": {
+                        "x": 135.575,
+                        "y": 133.475
+                    },
+                    "uuid": "c6fe0073-9a7c-4631-a95b-f6637b29bba1"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)",
+            "items": [
+                {
+                    "description": "PTH pad A8 [unconnected-(J2-SBU1-PadA8)] of J2",
+                    "pos": {
+                        "x": 137.275,
+                        "y": 133.475
+                    },
+                    "uuid": "2f11f00f-ee4b-43a8-9d30-a457f8951fd3"
+                },
+                {
+                    "description": "PTH pad A9 [Net-(U4-EN)] of J2",
+                    "pos": {
+                        "x": 138.125,
+                        "y": 133.475
+                    },
+                    "uuid": "a8f2612f-2146-4a55-a7ce-831d475f0041"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)",
+            "items": [
+                {
+                    "description": "PTH pad A8 [unconnected-(J2-SBU1-PadA8)] of J2",
+                    "pos": {
+                        "x": 137.275,
+                        "y": 133.475
+                    },
+                    "uuid": "2f11f00f-ee4b-43a8-9d30-a457f8951fd3"
+                },
+                {
+                    "description": "PTH pad A7 [/D-] of J2",
+                    "pos": {
+                        "x": 136.425,
+                        "y": 133.475
+                    },
+                    "uuid": "692cf70e-5eb6-4b8c-9ec3-553a19ad313f"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)",
+            "items": [
+                {
+                    "description": "PTH pad A8 [unconnected-(J2-SBU1-PadA8)] of J2",
+                    "pos": {
+                        "x": 137.275,
+                        "y": 133.475
+                    },
+                    "uuid": "2f11f00f-ee4b-43a8-9d30-a457f8951fd3"
+                },
+                {
+                    "description": "PTH pad A7 [/D-] of J2",
+                    "pos": {
+                        "x": 136.425,
+                        "y": 133.475
+                    },
+                    "uuid": "692cf70e-5eb6-4b8c-9ec3-553a19ad313f"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)",
+            "items": [
+                {
+                    "description": "PTH pad A8 [unconnected-(J2-SBU1-PadA8)] of J2",
+                    "pos": {
+                        "x": 137.275,
+                        "y": 133.475
+                    },
+                    "uuid": "2f11f00f-ee4b-43a8-9d30-a457f8951fd3"
+                },
+                {
+                    "description": "PTH pad A9 [Net-(U4-EN)] of J2",
+                    "pos": {
+                        "x": 138.125,
+                        "y": 133.475
+                    },
+                    "uuid": "a8f2612f-2146-4a55-a7ce-831d475f0041"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)",
+            "items": [
+                {
+                    "description": "PTH pad A9 [Net-(U4-EN)] of J2",
+                    "pos": {
+                        "x": 138.125,
+                        "y": 133.475
+                    },
+                    "uuid": "a8f2612f-2146-4a55-a7ce-831d475f0041"
+                },
+                {
+                    "description": "PTH pad A12 [GND] of J2",
+                    "pos": {
+                        "x": 138.975,
+                        "y": 133.475
+                    },
+                    "uuid": "ed3b898e-616d-417e-bd25-af8ea6c70296"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)",
+            "items": [
+                {
+                    "description": "PTH pad A9 [Net-(U4-EN)] of J2",
+                    "pos": {
+                        "x": 138.125,
+                        "y": 133.475
+                    },
+                    "uuid": "a8f2612f-2146-4a55-a7ce-831d475f0041"
+                },
+                {
+                    "description": "PTH pad A12 [GND] of J2",
+                    "pos": {
+                        "x": 138.975,
+                        "y": 133.475
+                    },
+                    "uuid": "ed3b898e-616d-417e-bd25-af8ea6c70296"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)",
+            "items": [
+                {
+                    "description": "PTH pad B1 [GND] of J2",
+                    "pos": {
+                        "x": 138.975,
+                        "y": 134.825
+                    },
+                    "uuid": "e09127a4-9070-489f-89ab-24c06dc6459d"
+                },
+                {
+                    "description": "PTH pad B4 [Net-(U4-EN)] of J2",
+                    "pos": {
+                        "x": 138.125,
+                        "y": 134.825
+                    },
+                    "uuid": "d3d7e6c0-39f1-4f5d-b07e-bf0db361abce"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)",
+            "items": [
+                {
+                    "description": "PTH pad B1 [GND] of J2",
+                    "pos": {
+                        "x": 138.975,
+                        "y": 134.825
+                    },
+                    "uuid": "e09127a4-9070-489f-89ab-24c06dc6459d"
+                },
+                {
+                    "description": "PTH pad B4 [Net-(U4-EN)] of J2",
+                    "pos": {
+                        "x": 138.125,
+                        "y": 134.825
+                    },
+                    "uuid": "d3d7e6c0-39f1-4f5d-b07e-bf0db361abce"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)",
+            "items": [
+                {
+                    "description": "PTH pad B5 [Net-(J2-CC2)] of J2",
+                    "pos": {
+                        "x": 137.275,
+                        "y": 134.825
+                    },
+                    "uuid": "71560489-46b7-4ead-aad2-065715d3b95a"
+                },
+                {
+                    "description": "PTH pad B4 [Net-(U4-EN)] of J2",
+                    "pos": {
+                        "x": 138.125,
+                        "y": 134.825
+                    },
+                    "uuid": "d3d7e6c0-39f1-4f5d-b07e-bf0db361abce"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)",
+            "items": [
+                {
+                    "description": "PTH pad B5 [Net-(J2-CC2)] of J2",
+                    "pos": {
+                        "x": 137.275,
+                        "y": 134.825
+                    },
+                    "uuid": "71560489-46b7-4ead-aad2-065715d3b95a"
+                },
+                {
+                    "description": "PTH pad B6 [/D+] of J2",
+                    "pos": {
+                        "x": 136.425,
+                        "y": 134.825
+                    },
+                    "uuid": "821b4b39-e50f-4973-bb77-8d0b1373172e"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)",
+            "items": [
+                {
+                    "description": "PTH pad B5 [Net-(J2-CC2)] of J2",
+                    "pos": {
+                        "x": 137.275,
+                        "y": 134.825
+                    },
+                    "uuid": "71560489-46b7-4ead-aad2-065715d3b95a"
+                },
+                {
+                    "description": "PTH pad B4 [Net-(U4-EN)] of J2",
+                    "pos": {
+                        "x": 138.125,
+                        "y": 134.825
+                    },
+                    "uuid": "d3d7e6c0-39f1-4f5d-b07e-bf0db361abce"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)",
+            "items": [
+                {
+                    "description": "PTH pad B5 [Net-(J2-CC2)] of J2",
+                    "pos": {
+                        "x": 137.275,
+                        "y": 134.825
+                    },
+                    "uuid": "71560489-46b7-4ead-aad2-065715d3b95a"
+                },
+                {
+                    "description": "PTH pad B6 [/D+] of J2",
+                    "pos": {
+                        "x": 136.425,
+                        "y": 134.825
+                    },
+                    "uuid": "821b4b39-e50f-4973-bb77-8d0b1373172e"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)",
+            "items": [
+                {
+                    "description": "PTH pad B6 [/D+] of J2",
+                    "pos": {
+                        "x": 136.425,
+                        "y": 134.825
+                    },
+                    "uuid": "821b4b39-e50f-4973-bb77-8d0b1373172e"
+                },
+                {
+                    "description": "PTH pad B7 [/D-] of J2",
+                    "pos": {
+                        "x": 135.575,
+                        "y": 134.825
+                    },
+                    "uuid": "c6f06482-97cf-45f9-afd8-d959139be49d"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)",
+            "items": [
+                {
+                    "description": "PTH pad B6 [/D+] of J2",
+                    "pos": {
+                        "x": 136.425,
+                        "y": 134.825
+                    },
+                    "uuid": "821b4b39-e50f-4973-bb77-8d0b1373172e"
+                },
+                {
+                    "description": "PTH pad B7 [/D-] of J2",
+                    "pos": {
+                        "x": 135.575,
+                        "y": 134.825
+                    },
+                    "uuid": "c6f06482-97cf-45f9-afd8-d959139be49d"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)",
+            "items": [
+                {
+                    "description": "PTH pad B8 [unconnected-(J2-SBU2-PadB8)] of J2",
+                    "pos": {
+                        "x": 134.725,
+                        "y": 134.825
+                    },
+                    "uuid": "29101cf0-39d1-4505-bb2b-0ac24ca6dbce"
+                },
+                {
+                    "description": "PTH pad B7 [/D-] of J2",
+                    "pos": {
+                        "x": 135.575,
+                        "y": 134.825
+                    },
+                    "uuid": "c6f06482-97cf-45f9-afd8-d959139be49d"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)",
+            "items": [
+                {
+                    "description": "PTH pad B8 [unconnected-(J2-SBU2-PadB8)] of J2",
+                    "pos": {
+                        "x": 134.725,
+                        "y": 134.825
+                    },
+                    "uuid": "29101cf0-39d1-4505-bb2b-0ac24ca6dbce"
+                },
+                {
+                    "description": "PTH pad B9 [Net-(U4-EN)] of J2",
+                    "pos": {
+                        "x": 133.875,
+                        "y": 134.825
+                    },
+                    "uuid": "e4adaa7b-bb3c-4468-86eb-1d553436086d"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)",
+            "items": [
+                {
+                    "description": "PTH pad B8 [unconnected-(J2-SBU2-PadB8)] of J2",
+                    "pos": {
+                        "x": 134.725,
+                        "y": 134.825
+                    },
+                    "uuid": "29101cf0-39d1-4505-bb2b-0ac24ca6dbce"
+                },
+                {
+                    "description": "PTH pad B7 [/D-] of J2",
+                    "pos": {
+                        "x": 135.575,
+                        "y": 134.825
+                    },
+                    "uuid": "c6f06482-97cf-45f9-afd8-d959139be49d"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)",
+            "items": [
+                {
+                    "description": "PTH pad B8 [unconnected-(J2-SBU2-PadB8)] of J2",
+                    "pos": {
+                        "x": 134.725,
+                        "y": 134.825
+                    },
+                    "uuid": "29101cf0-39d1-4505-bb2b-0ac24ca6dbce"
+                },
+                {
+                    "description": "PTH pad B9 [Net-(U4-EN)] of J2",
+                    "pos": {
+                        "x": 133.875,
+                        "y": 134.825
+                    },
+                    "uuid": "e4adaa7b-bb3c-4468-86eb-1d553436086d"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)",
+            "items": [
+                {
+                    "description": "PTH pad B9 [Net-(U4-EN)] of J2",
+                    "pos": {
+                        "x": 133.875,
+                        "y": 134.825
+                    },
+                    "uuid": "e4adaa7b-bb3c-4468-86eb-1d553436086d"
+                },
+                {
+                    "description": "PTH pad B12 [GND] of J2",
+                    "pos": {
+                        "x": 133.025,
+                        "y": 134.825
+                    },
+                    "uuid": "7f4d1a6b-d723-4f14-bad9-12cfb2e2c7ca"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1500 mm)",
+            "items": [
+                {
+                    "description": "PTH pad B9 [Net-(U4-EN)] of J2",
+                    "pos": {
+                        "x": 133.875,
+                        "y": 134.825
+                    },
+                    "uuid": "e4adaa7b-bb3c-4468-86eb-1d553436086d"
+                },
+                {
+                    "description": "PTH pad B12 [GND] of J2",
+                    "pos": {
+                        "x": 133.025,
+                        "y": 134.825
+                    },
+                    "uuid": "7f4d1a6b-d723-4f14-bad9-12cfb2e2c7ca"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.5000 mm; actual 0.3400 mm)",
+            "items": [
+                {
+                    "description": "Rectangle on Edge.Cuts",
+                    "pos": {
+                        "x": 82.5,
+                        "y": 85.0
+                    },
+                    "uuid": "1a5d7acc-61d2-44bc-98c2-abeefc3ccd21"
+                },
+                {
+                    "description": "Track [/IO4] on F.Cu, length 5.7064 mm",
+                    "pos": {
+                        "x": 173.0,
+                        "y": 135.0
+                    },
+                    "uuid": "85057a27-27f6-4b7f-a949-046c921c3b28"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.5000 mm; actual 0.3400 mm)",
+            "items": [
+                {
+                    "description": "Rectangle on Edge.Cuts",
+                    "pos": {
+                        "x": 82.5,
+                        "y": 85.0
+                    },
+                    "uuid": "1a5d7acc-61d2-44bc-98c2-abeefc3ccd21"
+                },
+                {
+                    "description": "Track [/IO4] on F.Cu, length 11.4961 mm",
+                    "pos": {
+                        "x": 177.035,
+                        "y": 130.965
+                    },
+                    "uuid": "df85653d-2d26-4e9c-8d89-9379a662a834"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.5000 mm; actual 0.3400 mm)",
+            "items": [
+                {
+                    "description": "Rectangle on Edge.Cuts",
+                    "pos": {
+                        "x": 82.5,
+                        "y": 85.0
+                    },
+                    "uuid": "1a5d7acc-61d2-44bc-98c2-abeefc3ccd21"
+                },
+                {
+                    "description": "Track [/IO4] on F.Cu, length 0.7566 mm",
+                    "pos": {
+                        "x": 177.035,
+                        "y": 119.468884
+                    },
+                    "uuid": "e0bddad0-647f-4379-ba88-24e54faea058"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.5000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Rectangle on Edge.Cuts",
+                    "pos": {
+                        "x": 82.5,
+                        "y": 85.0
+                    },
+                    "uuid": "1a5d7acc-61d2-44bc-98c2-abeefc3ccd21"
+                },
+                {
+                    "description": "Track [/IO5] on F.Cu, length 12.5000 mm",
+                    "pos": {
+                        "x": 177.5,
+                        "y": 131.5
+                    },
+                    "uuid": "57ddb5d7-b3fe-4ac4-8104-cbb89afbc9e1"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.5000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Rectangle on Edge.Cuts",
+                    "pos": {
+                        "x": 82.5,
+                        "y": 85.0
+                    },
+                    "uuid": "1a5d7acc-61d2-44bc-98c2-abeefc3ccd21"
+                },
+                {
+                    "description": "Track [/IO5] on F.Cu, length 5.7533 mm",
+                    "pos": {
+                        "x": 173.431802,
+                        "y": 135.568198
+                    },
+                    "uuid": "e0651f0d-b2a6-45f4-98ee-aa7f61b076a9"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.5000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Rectangle on Edge.Cuts",
+                    "pos": {
+                        "x": 82.5,
+                        "y": 85.0
+                    },
+                    "uuid": "1a5d7acc-61d2-44bc-98c2-abeefc3ccd21"
+                },
+                {
+                    "description": "Track [/IO5] on F.Cu, length 0.0500 mm",
+                    "pos": {
+                        "x": 177.5,
+                        "y": 119.0
+                    },
+                    "uuid": "f4aeead5-75b2-4aa4-bcc6-a6f18022b428"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.5000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Rectangle on Edge.Cuts",
+                    "pos": {
+                        "x": 82.5,
+                        "y": 85.0
+                    },
+                    "uuid": "1a5d7acc-61d2-44bc-98c2-abeefc3ccd21"
+                },
+                {
+                    "description": "Via [/IO5] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 177.45,
+                        "y": 119.0
+                    },
+                    "uuid": "4891be0b-f42d-45ed-86fc-d089a1666cf2"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Board edge clearance violation (board setup constraints edge clearance 0.5000 mm; actual 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Rectangle on Edge.Cuts",
+                    "pos": {
+                        "x": 82.5,
+                        "y": 85.0
+                    },
+                    "uuid": "1a5d7acc-61d2-44bc-98c2-abeefc3ccd21"
+                },
+                {
+                    "description": "Track [/IO5] on B.Cu, length 1.4500 mm",
+                    "pos": {
+                        "x": 177.45,
+                        "y": 119.0
+                    },
+                    "uuid": "88d40fd4-f39b-49fb-ad6e-2d61d55b7799"
+                }
+            ],
+            "severity": "error",
+            "type": "copper_edge_clearance"
+        },
+        {
+            "description": "Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2000 mm)",
+            "items": [
+                {
+                    "description": "PTH pad 41 [GND] of U1",
+                    "pos": {
+                        "x": 169.24,
+                        "y": 110.1
+                    },
+                    "uuid": "04ea9378-4d5b-4bc5-b8bc-f1f95ea95894"
+                }
+            ],
+            "severity": "error",
+            "type": "drill_out_of_range"
+        },
+        {
+            "description": "Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2000 mm)",
+            "items": [
+                {
+                    "description": "PTH pad 41 [GND] of U1",
+                    "pos": {
+                        "x": 167.84,
+                        "y": 110.1
+                    },
+                    "uuid": "91d206a0-b25d-4a4e-8d10-f3497afd740b"
+                }
+            ],
+            "severity": "error",
+            "type": "drill_out_of_range"
+        },
+        {
+            "description": "Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2000 mm)",
+            "items": [
+                {
+                    "description": "PTH pad 41 [GND] of U1",
+                    "pos": {
+                        "x": 169.94,
+                        "y": 110.8
+                    },
+                    "uuid": "d6cb3bf7-0b08-4668-9e03-35f4b0bd5796"
+                }
+            ],
+            "severity": "error",
+            "type": "drill_out_of_range"
+        },
+        {
+            "description": "Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2000 mm)",
+            "items": [
+                {
+                    "description": "PTH pad 41 [GND] of U1",
+                    "pos": {
+                        "x": 168.54,
+                        "y": 110.8
+                    },
+                    "uuid": "b3c3f3d5-15d8-49a1-b581-b81c458879df"
+                }
+            ],
+            "severity": "error",
+            "type": "drill_out_of_range"
+        },
+        {
+            "description": "Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2000 mm)",
+            "items": [
+                {
+                    "description": "PTH pad 41 [GND] of U1",
+                    "pos": {
+                        "x": 167.14,
+                        "y": 110.8
+                    },
+                    "uuid": "6b8fbacc-bf5f-4a56-aeca-d7878ac3e0a2"
+                }
+            ],
+            "severity": "error",
+            "type": "drill_out_of_range"
+        },
+        {
+            "description": "Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2000 mm)",
+            "items": [
+                {
+                    "description": "PTH pad 41 [GND] of U1",
+                    "pos": {
+                        "x": 169.24,
+                        "y": 111.5
+                    },
+                    "uuid": "96ec6060-da75-4b9e-898a-f1ce692823e2"
+                }
+            ],
+            "severity": "error",
+            "type": "drill_out_of_range"
+        },
+        {
+            "description": "Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2000 mm)",
+            "items": [
+                {
+                    "description": "PTH pad 41 [GND] of U1",
+                    "pos": {
+                        "x": 167.84,
+                        "y": 111.5
+                    },
+                    "uuid": "281f252f-6eb4-4b45-84d5-456e3d96de84"
+                }
+            ],
+            "severity": "error",
+            "type": "drill_out_of_range"
+        },
+        {
+            "description": "Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2000 mm)",
+            "items": [
+                {
+                    "description": "PTH pad 41 [GND] of U1",
+                    "pos": {
+                        "x": 169.94,
+                        "y": 112.2
+                    },
+                    "uuid": "638ea0df-a2c9-45a3-bc15-2b613da1a4da"
+                }
+            ],
+            "severity": "error",
+            "type": "drill_out_of_range"
+        },
+        {
+            "description": "Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2000 mm)",
+            "items": [
+                {
+                    "description": "PTH pad 41 [GND] of U1",
+                    "pos": {
+                        "x": 168.54,
+                        "y": 112.2
+                    },
+                    "uuid": "5e2286f3-9ec0-49c8-8f39-881373886513"
+                }
+            ],
+            "severity": "error",
+            "type": "drill_out_of_range"
+        },
+        {
+            "description": "Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2000 mm)",
+            "items": [
+                {
+                    "description": "PTH pad 41 [GND] of U1",
+                    "pos": {
+                        "x": 167.14,
+                        "y": 112.2
+                    },
+                    "uuid": "9f187e17-4d45-4c15-b911-d0be72cef25c"
+                }
+            ],
+            "severity": "error",
+            "type": "drill_out_of_range"
+        },
+        {
+            "description": "Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2000 mm)",
+            "items": [
+                {
+                    "description": "PTH pad 41 [GND] of U1",
+                    "pos": {
+                        "x": 169.24,
+                        "y": 112.9
+                    },
+                    "uuid": "e2233bcc-858e-44f7-a043-d9a070215857"
+                }
+            ],
+            "severity": "error",
+            "type": "drill_out_of_range"
+        },
+        {
+            "description": "Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2000 mm)",
+            "items": [
+                {
+                    "description": "PTH pad 41 [GND] of U1",
+                    "pos": {
+                        "x": 167.84,
+                        "y": 112.9
+                    },
+                    "uuid": "943ac2c8-261b-445a-b02c-9d56e315e6df"
+                }
+            ],
+            "severity": "error",
+            "type": "drill_out_of_range"
+        },
+        {
+            "description": "Thermal relief connection to zone incomplete (layer B.Cu; zone min spoke count 2; actual 1)",
+            "items": [
+                {
+                    "description": "Zone [GND] on B.Cu, priority 0",
+                    "pos": {
+                        "x": 82.5,
+                        "y": 85.0
+                    },
+                    "uuid": "a22a0dbb-3011-4d7a-b847-c33810175197"
+                },
+                {
+                    "description": "PTH pad B1 [GND] of J2",
+                    "pos": {
+                        "x": 138.975,
+                        "y": 134.825
+                    },
+                    "uuid": "e09127a4-9070-489f-89ab-24c06dc6459d"
+                }
+            ],
+            "severity": "error",
+            "type": "starved_thermal"
+        },
+        {
+            "description": "Thermal relief connection to zone incomplete (layer B.Cu; zone min spoke count 2; actual 1)",
+            "items": [
+                {
+                    "description": "Zone [GND] on B.Cu, priority 0",
+                    "pos": {
+                        "x": 82.5,
+                        "y": 85.0
+                    },
+                    "uuid": "a22a0dbb-3011-4d7a-b847-c33810175197"
+                },
+                {
+                    "description": "PTH pad B12 [GND] of J2",
+                    "pos": {
+                        "x": 133.025,
+                        "y": 134.825
+                    },
+                    "uuid": "7f4d1a6b-d723-4f14-bad9-12cfb2e2c7ca"
+                }
+            ],
+            "severity": "error",
+            "type": "starved_thermal"
+        },
+        {
+            "description": "Via is not connected or connected on only one layer",
+            "items": [
+                {
+                    "description": "Via [GND] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 160.0,
+                        "y": 106.5
+                    },
+                    "uuid": "371133e1-ff2f-4269-b554-8c55308585fe"
+                }
+            ],
+            "severity": "warning",
+            "type": "via_dangling"
+        },
+        {
+            "description": "Via is not connected or connected on only one layer",
+            "items": [
+                {
+                    "description": "Via [+3.3V] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 174.99,
+                        "y": 101.5
+                    },
+                    "uuid": "b46c9d1f-5876-42b1-8f94-e6af3f84e785"
+                }
+            ],
+            "severity": "warning",
+            "type": "via_dangling"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Rectangle on Edge.Cuts",
+                    "pos": {
+                        "x": 82.5,
+                        "y": 85.0
+                    },
+                    "uuid": "1a5d7acc-61d2-44bc-98c2-abeefc3ccd21"
+                },
+                {
+                    "description": "Segment of J2 on F.Silkscreen",
+                    "pos": {
+                        "x": 131.405,
+                        "y": 139.475
+                    },
+                    "uuid": "6f942ce0-7119-4f6b-b91d-a0db1465e07e"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Rectangle on Edge.Cuts",
+                    "pos": {
+                        "x": 82.5,
+                        "y": 85.0
+                    },
+                    "uuid": "1a5d7acc-61d2-44bc-98c2-abeefc3ccd21"
+                },
+                {
+                    "description": "Segment of J2 on F.Silkscreen",
+                    "pos": {
+                        "x": 140.595,
+                        "y": 139.475
+                    },
+                    "uuid": "0c6a4ed1-eafc-47a7-85c8-394976868cac"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Rectangle on Edge.Cuts",
+                    "pos": {
+                        "x": 82.5,
+                        "y": 85.0
+                    },
+                    "uuid": "1a5d7acc-61d2-44bc-98c2-abeefc3ccd21"
+                },
+                {
+                    "description": "Polygon of U1 on F.Silkscreen",
+                    "pos": {
+                        "x": 177.025,
+                        "y": 103.8
+                    },
+                    "uuid": "f820d32f-ed29-42e9-a40d-fa7ad9e1d993"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'Resistor_SMD'",
+            "items": [
+                {
+                    "description": "Footprint R2",
+                    "pos": {
+                        "x": 134.5,
+                        "y": 126.675
+                    },
+                    "uuid": "0bdb1548-a4b1-4dbf-93cc-60c6aa225b2d"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'Resistor_SMD'",
+            "items": [
+                {
+                    "description": "Footprint R1",
+                    "pos": {
+                        "x": 175.5,
+                        "y": 99.5
+                    },
+                    "uuid": "12a51aa2-98a6-445b-a7a8-f0de95a0fc83"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'Diode_SMD'",
+            "items": [
+                {
+                    "description": "Footprint D1",
+                    "pos": {
+                        "x": 120.5,
+                        "y": 102.0
+                    },
+                    "uuid": "2ecbc6c7-c22b-43a6-aed2-2826fc69febc"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'Resistor_SMD'",
+            "items": [
+                {
+                    "description": "Footprint R3",
+                    "pos": {
+                        "x": 140.5,
+                        "y": 126.5
+                    },
+                    "uuid": "3b912a38-0c61-46ab-977c-6ca202e69d5e"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'Package_TO_SOT_SMD'",
+            "items": [
+                {
+                    "description": "Footprint U5",
+                    "pos": {
+                        "x": 134.5,
+                        "y": 121.0
+                    },
+                    "uuid": "4a342f7a-df5f-4c48-b132-9ee248ff9d86"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'Button_Switch_THT'",
+            "items": [
+                {
+                    "description": "Footprint SW1",
+                    "pos": {
+                        "x": 171.25,
+                        "y": 126.75
+                    },
+                    "uuid": "5491d818-dfc1-4d53-b37c-8aa8476f5ee4"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'Capacitor_SMD'",
+            "items": [
+                {
+                    "description": "Footprint C3",
+                    "pos": {
+                        "x": 175.5,
+                        "y": 93.0
+                    },
+                    "uuid": "5d0ef3fa-490d-48b6-801b-2ad115925e45"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'Capacitor_SMD'",
+            "items": [
+                {
+                    "description": "Footprint C2",
+                    "pos": {
+                        "x": 150.0,
+                        "y": 110.0
+                    },
+                    "uuid": "65f7314b-2e8c-4a9f-8d4a-1c85deb8638b"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'Resistor_SMD'",
+            "items": [
+                {
+                    "description": "Footprint R5",
+                    "pos": {
+                        "x": 153.5,
+                        "y": 118.175
+                    },
+                    "uuid": "66699612-a666-4952-8b2d-6edfd6644018"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'Connector_Dsub'",
+            "items": [
+                {
+                    "description": "Footprint J1",
+                    "pos": {
+                        "x": 91.16,
+                        "y": 118.195
+                    },
+                    "uuid": "6724ce6c-9926-46d0-b407-bf5cd351aafa"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library '1812L075_33DR'",
+            "items": [
+                {
+                    "description": "Footprint F1",
+                    "pos": {
+                        "x": 109.5,
+                        "y": 98.0
+                    },
+                    "uuid": "72845080-f40b-4bf5-bd14-581abd46321a"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'Resistor_SMD'",
+            "items": [
+                {
+                    "description": "Footprint R6",
+                    "pos": {
+                        "x": 153.5,
+                        "y": 123.5
+                    },
+                    "uuid": "7424cb76-b18d-41e3-8c05-1d7b4b218920"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'Resistor_SMD'",
+            "items": [
+                {
+                    "description": "Footprint R7",
+                    "pos": {
+                        "x": 159.0,
+                        "y": 129.175
+                    },
+                    "uuid": "78202dcb-b1ac-42d2-b6ba-369b18b44e9e"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'Resistor_SMD'",
+            "items": [
+                {
+                    "description": "Footprint R4",
+                    "pos": {
+                        "x": 154.0,
+                        "y": 103.0
+                    },
+                    "uuid": "ab656744-0390-461a-a046-b40791575a09"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'Converter_DCDC'",
+            "items": [
+                {
+                    "description": "Footprint U2",
+                    "pos": {
+                        "x": 141.92,
+                        "y": 103.0
+                    },
+                    "uuid": "bc12af54-5b06-470c-aed1-72ae30b90c22"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'Button_Switch_THT'",
+            "items": [
+                {
+                    "description": "Footprint SW2",
+                    "pos": {
+                        "x": 171.5,
+                        "y": 93.0
+                    },
+                    "uuid": "c8d04327-8d4c-44c0-8f4e-07e3000d18c6"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'Package_TO_SOT_SMD'",
+            "items": [
+                {
+                    "description": "Footprint U4",
+                    "pos": {
+                        "x": 127.1375,
+                        "y": 126.45
+                    },
+                    "uuid": "d658199d-1053-4117-8015-a2c48319fd0a"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'Capacitor_SMD'",
+            "items": [
+                {
+                    "description": "Footprint C1",
+                    "pos": {
+                        "x": 134.0,
+                        "y": 109.0
+                    },
+                    "uuid": "dadec33e-b7ff-48ce-ba88-efbd886558a3"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'Connector_USB'",
+            "items": [
+                {
+                    "description": "Footprint J2",
+                    "pos": {
+                        "x": 133.025,
+                        "y": 133.475
+                    },
+                    "uuid": "e4093f0a-087d-488c-995d-1de2b5fb4c4c"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'Diode_SMD'",
+            "items": [
+                {
+                    "description": "Footprint D2",
+                    "pos": {
+                        "x": 130.5,
+                        "y": 103.0
+                    },
+                    "uuid": "e8584d5d-acac-4620-bea6-d696e4c5a70e"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'Package_SO'",
+            "items": [
+                {
+                    "description": "Footprint U3",
+                    "pos": {
+                        "x": 118.0,
+                        "y": 118.5
+                    },
+                    "uuid": "f2caefc4-1b54-4c10-a60b-72b66accd2e2"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'RF_Module'",
+            "items": [
+                {
+                    "description": "Footprint U1",
+                    "pos": {
+                        "x": 171.0,
+                        "y": 113.0
+                    },
+                    "uuid": "fb0848e1-9024-4151-a46a-83c2ab90cfa6"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.7804 mm)",
+            "items": [
+                {
+                    "description": "Reference field of F1",
+                    "pos": {
+                        "x": 110.119425,
+                        "y": 101.306269
+                    },
+                    "uuid": "b72ef6ad-d159-421f-9cf7-d971243330e0"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        }
+    ]
+}
