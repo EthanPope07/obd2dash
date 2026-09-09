@@ -1,5 +1,6 @@
 name: iPad app
 on:
+  workflow_dispatch:
   push:
     paths: ['ipad/**', '.github/workflows/ipad.yml']
   pull_request:
@@ -16,3 +17,33 @@ jobs:
         run: swift test --package-path ipad/OBDCore
       - name: Build iPad simulator app
         run: xcodebuild -project ipad/OBD2Dash.xcodeproj -scheme OBD2Dash -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' CODE_SIGNING_ALLOWED=NO build
+      - name: Build unsigned iPad device app
+        run: |
+          xcodebuild -project ipad/OBD2Dash.xcodeproj \
+            -scheme OBD2Dash -configuration Release \
+            -sdk iphoneos -destination 'generic/platform=iOS' \
+            -derivedDataPath build/ipad \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO \
+            CURRENT_PROJECT_VERSION="$GITHUB_RUN_NUMBER" build
+      - name: Verify and package IPA
+        shell: bash
+        run: |
+          set -euo pipefail
+          APP=build/ipad/Build/Products/Release-iphoneos/OBD2Dash.app
+          test -f "$APP/OBD2Dash"
+          /usr/libexec/PlistBuddy -c 'Print :CFBundleSupportedPlatforms:0' "$APP/Info.plist" | grep -qx iPhoneOS
+          xcrun lipo -verify_arch arm64 "$APP/OBD2Dash"
+          mkdir -p build/package/Payload build/artifacts
+          ditto "$APP" build/package/Payload/OBD2Dash.app
+          (cd build/package && zip -qr ../artifacts/OBD2Dash-unsigned.ipa Payload)
+          unzip -t build/artifacts/OBD2Dash-unsigned.ipa
+          (cd build/artifacts && shasum -a 256 OBD2Dash-unsigned.ipa > SHA256SUMS.txt)
+          echo '### iPad download' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Download OBD2Dash-iPad-unsigned from Artifacts below and extract the ZIP. Install the IPA using Sideloadly on Windows with your own Apple account. Requires iPadOS 17+. This unsigned device build needs local signing; it is not a TestFlight build. See ipad/README.md for instructions.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload iPad app
+        uses: actions/upload-artifact@v4
+        with:
+          name: OBD2Dash-iPad-unsigned
+          path: build/artifacts/
+          if-no-files-found: error
+          retention-days: 30

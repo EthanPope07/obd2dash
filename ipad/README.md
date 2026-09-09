@@ -2,7 +2,20 @@
 
 A native SwiftUI dashboard for the BLE stream in this repository. Requires iPadOS 17 or newer. No third-party app dependencies.
 
-## Run on an iPad
+## Build with GitHub and install from Windows (free Apple account)
+
+1. Open [the iPad app workflow](https://github.com/EthanPope07/obd2dash/actions/workflows/ipad.yml). Builds run automatically when app code changes. To rebuild manually, sign in as a repository collaborator, choose **Run workflow**, and select `main`.
+2. Open a successful run. Under **Artifacts**, download **OBD2Dash-iPad-unsigned** (GitHub sign-in required), then extract the downloaded ZIP to get `OBD2Dash-unsigned.ipa`. Artifacts expire after 30 days; run the workflow again if needed.
+3. Install [Sideloadly for Windows](https://sideloadly.io/) and its required Apple device components using its current official instructions. Connect your iPad by USB, unlock it, and trust the computer.
+4. Select the iPad and drag the `.ipa` into Sideloadly. Use **Apple ID Sideload** with your own free Apple account and start installation. Enter account credentials only in the local signing tool, never in this repository or GitHub Actions.
+5. If prompted, trust your developer profile under **Settings > General > VPN & Device Management**. Enable **Settings > Privacy & Security > Developer Mode** and restart if requested.
+6. Open OBD2Dash and allow Bluetooth access. Power on the scanner with this repository's firmware; the foreground app connects automatically.
+
+Free-account signing lasts seven days. Refresh or reinstall with Sideloadly using the same account and bundle identifier; see its [FAQ](https://sideloadly.io/faq) for automatic refresh and account limits. No paid developer membership or personally owned Mac is needed for this workflow. The iPad must run iPadOS 17 or newer.
+
+GitHub tests the protocol core, builds the simulator app, and builds an unsigned Release app for physical ARM64 iPads. It checks the device platform and architecture, packages `Payload/OBD2Dash.app` as an IPA, and supplies `SHA256SUMS.txt`. The IPA cannot be installed directly until Sideloadly signs it. No Apple credentials or signing certificates are used by CI. A successful build does not verify physical installation or BLE behavior; those still require an iPad and scanner.
+
+## Run on an iPad with Xcode
 
 1. Clone the repository on a Mac with Xcode 15 or newer (Xcode 16 recommended).
 2. Open ipad/OBD2Dash.xcodeproj.
