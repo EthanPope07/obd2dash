@@ -28,11 +28,11 @@ jobs:
       - name: Verify and package IPA
         shell: bash
         run: |
-          set -euo pipefail
+          set -euxo pipefail
           APP=build/ipad/Build/Products/Release-iphoneos/OBD2Dash.app
           test -f "$APP/OBD2Dash"
           /usr/libexec/PlistBuddy -c 'Print :CFBundleSupportedPlatforms:0' "$APP/Info.plist" | grep -qx iPhoneOS
-          xcrun lipo -verify_arch arm64 "$APP/OBD2Dash"
+          xcrun lipo "$APP/OBD2Dash" -verify_arch arm64
           mkdir -p build/package/Payload build/artifacts
           ditto "$APP" build/package/Payload/OBD2Dash.app
           (cd build/package && zip -qr ../artifacts/OBD2Dash-unsigned.ipa Payload)
