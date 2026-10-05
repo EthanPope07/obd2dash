@@ -41,7 +41,11 @@ The firmware polls broadly, so vehicles with many PIDs may not refresh gauges qu
 
 ## Preview without a scanner
 
-In Xcode, Edit Scheme -> Run -> Arguments, add --demo. This uses clearly labeled simulated readings and does not start Bluetooth. Remove the argument for real telemetry. Simulator previews are not hardware validation.
+Open the top-right three-dot menu and choose **Demo: 2017 Infiniti QX70**. No scanner or Bluetooth permission is needed to run the simulation. The gauges and 19 PID rows update once per second through a repeating stop-and-go drive, with acceleration, cruise, braking, idle and gradual engine warm-up.
+
+An orange demo banner and connection status identify all readings as simulated. This is an illustrative vehicle profile, not measured QX70 data or a claim that your car supports every demonstrated PID. Values pass through the same PID decoder used for live readings.
+
+Demo pauses Bluetooth scanning and disconnects any scanner without forgetting it. **Exit demo mode** clears simulated records and resumes normal Bluetooth connection behavior. Simulation pauses in the background. Xcode's `--demo` launch argument still works for previews.
 
 ## Protocol and testing
 

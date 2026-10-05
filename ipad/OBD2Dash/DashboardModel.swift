@@ -25,7 +25,8 @@ final class DashboardModel: NSObject, ObservableObject, CBCentralManagerDelegate
     private var retry: DispatchWorkItem?
     private var clock: Timer?
     private var active = true
-    private var demo = false
+    @Published private(set) var demo = false
+    private var demoElapsed: Double = 0
 
     var ecus: [UInt16] { Array(Set(rows.map { $0.key.ecu })).sorted() }
     var filteredRows: [PIDRow] {
@@ -45,14 +46,20 @@ final class DashboardModel: NSObject, ObservableObject, CBCentralManagerDelegate
         }
         clock = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             self?.now = Date()
-            if self?.demo == true { self?.loadDemo() }
+            if let self, self.demo, self.active {
+                self.demoElapsed += 1
+                self.loadDemo()
+            }
         }
     }
     deinit { clock?.invalidate(); deadline?.cancel(); retry?.cancel() }
 
     func setActive(_ value: Bool) {
         active = value
-        guard !demo else { return }
+        guard !demo else {
+            if value { loadDemo() }
+            return
+        }
         if value { scan() } else {
             retry?.cancel(); deadline?.cancel()
             central.stopScan()
@@ -62,6 +69,32 @@ final class DashboardModel: NSObject, ObservableObject, CBCentralManagerDelegate
             if let p = peripheral { peripheral = nil; central.cancelPeripheralConnection(p) }
         }
     }
+    // Simulation owns the data store while enabled. Late BLE callbacks cannot mix
+    // vehicle data into the demo, and leaving demo starts with an empty store.
+    func setDemo(_ enabled: Bool) {
+        guard enabled != demo else { return }
+        demo = enabled
+        retry?.cancel(); deadline?.cancel()
+        central?.stopScan()
+        if let p = peripheral {
+            peripheral = nil
+            central?.cancelPeripheralConnection(p)
+        }
+        assembler.reset(); store.clear(); rows = []
+        received = 0; dropped = 0; streaming = false
+        query = ""; selectedECU = 0x7e8; now = Date()
+        if enabled {
+            demoElapsed = 0
+            loadDemo()
+        } else {
+            deviceName = "OBD2Dash"
+            discovery = "Waiting for support maps"
+            connection = "Starting Bluetooth"
+            if let central { centralManagerDidUpdateState(central) }
+            else { central = CBCentralManager(delegate: self, queue: .main) }
+        }
+    }
+
     func reconnect() {
         guard !demo else { return }
         retry?.cancel(); deadline?.cancel(); central.stopScan()
@@ -75,23 +108,23 @@ final class DashboardModel: NSObject, ObservableObject, CBCentralManagerDelegate
     }
 
     private func scheduleScan() {
-        guard active, central.state == .poweredOn else { return }
+        guard !demo, active, central.state == .poweredOn else { return }
         retry?.cancel()
         let job = DispatchWorkItem { [weak self] in self?.scan() }
         retry = job
         DispatchQueue.main.asyncAfter(deadline: .now()+2, execute: job)
     }
     private func scan() {
-        guard active, central.state == .poweredOn, peripheral == nil, !central.isScanning else { return }
+        guard !demo, active, central.state == .poweredOn, peripheral == nil, !central.isScanning else { return }
         connection = UserDefaults.standard.string(forKey: rememberedKey) == nil
             ? "Looking for OBD2Dash" : "Looking for your OBD2Dash"
         central.scanForPeripherals(withServices: [Self.service],
                                    options: [CBCentralManagerScanOptionAllowDuplicatesKey: false])
         deadline?.cancel()
         let job = DispatchWorkItem { [weak self] in
-            guard let self, self.peripheral == nil else { return }
+            guard let self, !self.demo, self.active, self.peripheral == nil else { return }
             self.central.stopScan()
-            self.connection = "Device not found · retrying"
+            self.connection = "Device not found Â· retrying"
             self.scheduleScan()
         }
         deadline = job
@@ -117,7 +150,7 @@ final class DashboardModel: NSObject, ObservableObject, CBCentralManagerDelegate
     }
     func centralManager(_ central: CBCentralManager, didDiscover found: CBPeripheral,
                         advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        guard active, peripheral == nil else { return }
+        guard !demo, active, peripheral == nil else { return }
         if let remembered = UserDefaults.standard.string(forKey: rememberedKey),
            remembered != found.identifier.uuidString { return }
         central.stopScan(); deadline?.cancel()
@@ -128,13 +161,13 @@ final class DashboardModel: NSObject, ObservableObject, CBCentralManagerDelegate
         let id = found.identifier
         let job = DispatchWorkItem { [weak self] in
             guard let self, self.peripheral?.identifier == id, !self.streaming else { return }
-            self.fail("Connection timed out · retrying")
+            self.fail("Connection timed out Â· retrying")
         }
         deadline = job
         DispatchQueue.main.asyncAfter(deadline: .now()+15, execute: job)
     }
     func centralManager(_ central: CBCentralManager, didConnect p: CBPeripheral) {
-        guard active, peripheral?.identifier == p.identifier else {
+        guard !demo, active, peripheral?.identifier == p.identifier else {
             central.cancelPeripheralConnection(p); return
         }
         store.clear(); rows = []; assembler.reset()
@@ -144,11 +177,11 @@ final class DashboardModel: NSObject, ObservableObject, CBCentralManagerDelegate
     }
     func centralManager(_ central: CBCentralManager, didFailToConnect p: CBPeripheral, error: Error?) {
         guard peripheral?.identifier == p.identifier else { return }
-        fail("Connection failed · retrying")
+        fail("Connection failed Â· retrying")
     }
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral p: CBPeripheral, error: Error?) {
         guard peripheral?.identifier == p.identifier else { return }
-        fail("Disconnected · reconnecting")
+        fail("Disconnected Â· reconnecting")
     }
     func peripheral(_ p: CBPeripheral, didDiscoverServices error: Error?) {
         guard peripheral?.identifier == p.identifier else { return }
@@ -168,7 +201,7 @@ final class DashboardModel: NSObject, ObservableObject, CBCentralManagerDelegate
     }
     func peripheral(_ p: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
         guard peripheral?.identifier == p.identifier, characteristic.uuid == Self.stream else { return }
-        guard error == nil, characteristic.isNotifying else { fail("Subscription failed · retrying"); return }
+        guard error == nil, characteristic.isNotifying else { fail("Subscription failed Â· retrying"); return }
         deadline?.cancel(); streaming = true; connection = "Connected"
         UserDefaults.standard.set(p.identifier.uuidString, forKey: rememberedKey)
     }
@@ -192,7 +225,7 @@ final class DashboardModel: NSObject, ObservableObject, CBCentralManagerDelegate
         if !store.discovery.isEmpty {
             discovery = store.discovery.keys.sorted().map {
                 String(format: "%03X", Int($0)) + ": " + (store.discovery[$0] ?? "")
-            }.joined(separator: " · ")
+            }.joined(separator: " Â· ")
         }
     }
     func gauge(_ pid: UInt8) -> Reading? {
@@ -201,16 +234,50 @@ final class DashboardModel: NSObject, ObservableObject, CBCentralManagerDelegate
         return row.reading
     }
     private func loadDemo() {
-        connection = "Demo · simulated readings"; deviceName = "Demo dashboard"; streaming = true
+        connection = "Demo · simulated readings"
+        deviceName = "2017 Infiniti QX70"
+        streaming = true
+        // Illustrative stop-and-go drive, not a captured QX70 trace or verified
+        // PID support inventory. All samples use the normal production decoder.
+        let phase = demoElapsed.truncatingRemainder(dividingBy: 100)
+        let speed: Double
+        switch phase {
+        case 0..<10: speed = 0
+        case 10..<35: speed = (phase - 10) * 3.2
+        case 35..<65: speed = 80 + 4 * sin((phase - 35) / 5)
+        case 65..<90: speed = max(0, 80 - (phase - 65) * 3.2)
+        default: speed = 0
+        }
+        let accelerating = phase >= 10 && phase < 35
+        let rpm = speed < 1 ? 720 + 25 * sin(demoElapsed / 3)
+            : (accelerating ? 1500 + (speed.truncatingRemainder(dividingBy: 24)) * 80 : 1200 + speed * 14)
+        let throttle = speed < 1 ? 4.0 : accelerating ? 38.0 : phase >= 65 ? 6.0 : 18.0
+        let coolant = min(92.0, 72 + demoElapsed / 4)
+        func byte(_ value: Double) -> UInt8 { UInt8(max(0, min(255, value.rounded()))) }
+        func word(_ value: Double) -> [UInt8] {
+            let n = UInt16(max(0, min(65535, value.rounded())))
+            return [UInt8(n >> 8), UInt8(n & 255)]
+        }
         let examples: [(UInt8, [UInt8])] = [
-            (0x0c,[0x1a,0xf8]), (0x0d,[64]), (0x05,[130]), (0x04,[94]),
-            (0x11,[61]), (0x0f,[65]), (0x42,[0x36,0xb0]), (0x78,[1,2,3,4,5])
+            (0x0c, word(rpm * 4)), (0x0d, [byte(speed)]), (0x05, [byte(coolant + 40)]),
+            (0x04, [byte((accelerating ? 65 : speed < 1 ? 18 : 32) * 2.55)]),
+            (0x11, [byte(throttle * 2.55)]), (0x0f, [byte(68 + 2 * sin(demoElapsed / 15))]),
+            (0x42, word(13900 + 120 * sin(demoElapsed / 8))),
+            (0x06, [byte(128 + 4 * sin(demoElapsed / 4))]),
+            (0x07, [130]), (0x08, [byte(128 + 3 * sin(demoElapsed / 5))]), (0x09, [129]),
+            (0x0b, [byte(speed < 1 ? 32 : accelerating ? 78 : 42)]),
+            (0x0e, [byte((speed < 1 ? 10 : 28) * 2 + 128)]),
+            (0x10, word((speed < 1 ? 4.5 : 12 + speed * 0.35) * 100)),
+            (0x1f, word(demoElapsed)), (0x2f, [byte(68 * 2.55)]),
+            (0x33, [101]), (0x46, [64]), (0x5c, [byte(min(98, 65 + demoElapsed / 3) + 40)])
         ]
         for (pid, bytes) in examples {
             store.accept(TelemetryRecord(kind: 1, pid: pid, ecu: 0x7e8, sequence: 0,
-                        status: 0, timestamp: 0, bytes: bytes), at: Date())
+                        status: 0, timestamp: UInt32(min(demoElapsed * 1000, Double(UInt32.max))),
+                        bytes: bytes), at: now)
         }
+        received += examples.count
         refreshRows()
-        discovery = "Demo data only · no Bluetooth connection"
+        discovery = "SIMULATED · Illustrative QX70 drive · PID support is not verified for your vehicle · Bluetooth paused"
     }
 }

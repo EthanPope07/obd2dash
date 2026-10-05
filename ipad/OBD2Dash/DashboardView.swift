@@ -10,18 +10,26 @@ struct DashboardView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
                     header
+                    if model.demo {
+                        Label("DEMO · 2017 Infiniti QX70 · Simulated data, no scanner connected",
+                              systemImage: "play.rectangle.fill")
+                            .font(.subheadline.weight(.semibold))
+                            .foregroundStyle(.orange)
+                            .padding(14).frame(maxWidth: .infinity, alignment: .leading)
+                            .background(panel, in: RoundedRectangle(cornerRadius: 12))
+                    }
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 220), spacing: 16)], spacing: 16) {
                         Dial(title: "ENGINE SPEED", reading: model.gauge(0x0c), unit: "rpm",
                              lower: 0, upper: 8000, accent: mint)
                         Dial(title: "VEHICLE SPEED", reading: model.gauge(0x0d), unit: "km/h",
                              lower: 0, upper: 240, accent: .cyan)
-                        Dial(title: "COOLANT", reading: model.gauge(0x05), unit: "°C",
+                        Dial(title: "COOLANT", reading: model.gauge(0x05), unit: "Â°C",
                              lower: -40, upper: 160, accent: .orange)
                     }
                     HStack {
                         VStack(alignment: .leading, spacing: 5) {
                             Text("All PIDs").font(.title2.bold())
-                            Text("\(model.rows.count) supported or observed · \(model.received) records")
+                            Text("\(model.rows.count) supported or observed Â· \(model.received) records")
                                 .font(.subheadline).foregroundStyle(.secondary)
                         }
                         Spacer()
@@ -84,14 +92,20 @@ struct DashboardView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Menu {
+                        Button(model.demo ? "Exit demo mode" : "Demo: 2017 Infiniti QX70",
+                               systemImage: model.demo ? "stop.circle" : "play.circle") {
+                            model.setDemo(!model.demo)
+                        }
+                        Divider()
                         Button("Reconnect", systemImage: "arrow.clockwise") { model.reconnect() }
+                            .disabled(model.demo)
                         Button("Forget scanner", systemImage: "antenna.radiowaves.left.and.right.slash") {
                             model.forgetDevice()
-                        }
+                        }.disabled(model.demo)
                     } label: {
                         Image(systemName: "ellipsis.circle").foregroundStyle(mint)
                     }
-                    .accessibilityLabel("Connection options")
+                    .accessibilityLabel("Dashboard options")
                 }
             }
         }
@@ -100,7 +114,7 @@ struct DashboardView: View {
         HStack(alignment: .center, spacing: 12) {
             Image(systemName: "car.side.fill").font(.title2).foregroundStyle(mint)
             VStack(alignment: .leading, spacing: 4) {
-                Text("Vehicle dashboard").font(.largeTitle.bold())
+                Text(model.demo ? "QX70 demo dashboard" : "Vehicle dashboard").font(.largeTitle.bold())
                 Text(model.deviceName).foregroundStyle(.secondary)
             }
             Spacer()
@@ -137,7 +151,7 @@ private struct Dial: View {
                     .stroke(accent, style: StrokeStyle(lineWidth: 11, lineCap: .round))
                     .rotationEffect(.degrees(135))
                 VStack(spacing: 4) {
-                    Text(reading.map { String(format: "%.0f", $0.value) } ?? "—")
+                    Text(reading.map { String(format: "%.0f", $0.value) } ?? "â€”")
                         .font(.system(size: 42, weight: .semibold, design: .rounded))
                         .monospacedDigit().minimumScaleFactor(0.6).lineLimit(1)
                     Text(unit).font(.subheadline).foregroundStyle(.secondary)
@@ -146,6 +160,7 @@ private struct Dial: View {
                 .padding(16)
             }
             .frame(width: 176, height: 176)
+            .animation(.easeInOut(duration: 0.8), value: fraction)
             HStack {
                 Text(String(format: "%.0f", lower)); Spacer(); Text(String(format: "%.0f", upper))
             }
@@ -171,7 +186,7 @@ private struct PIDRowView: View {
     var body: some View {
         DisclosureGroup {
             VStack(alignment: .leading, spacing: 8) {
-                Text("Raw bytes: " + (row.raw.isEmpty ? "—" : row.raw))
+                Text("Raw bytes: " + (row.raw.isEmpty ? "â€”" : row.raw))
                     .font(.caption.monospaced()).textSelection(.enabled)
                 if let timestamp = row.deviceTimestamp {
                     Text("Device uptime: \(timestamp) ms").font(.caption).foregroundStyle(.secondary)
@@ -194,7 +209,7 @@ private struct PIDRowView: View {
                 }
                 Spacer()
                 VStack(alignment: .trailing, spacing: 5) {
-                    Text(row.reading?.text ?? (row.status == 0 ? "Raw data" : "—"))
+                    Text(row.reading?.text ?? (row.status == 0 ? "Raw data" : "â€”"))
                         .font(.system(.body, design: .monospaced).weight(.semibold))
                     if let received = row.receivedAt {
                         Text("\(max(0, Int(now.timeIntervalSince(received))))s ago")
