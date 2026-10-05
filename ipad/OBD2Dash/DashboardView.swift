@@ -11,25 +11,21 @@ struct DashboardView: View {
                 VStack(alignment: .leading, spacing: 24) {
                     header
                     if model.demo {
-                        Label("DEMO · 2017 Infiniti QX70 · Simulated data, no scanner connected",
+                        Label("DEMO \u{b7} 2017 Infiniti QX70 \u{b7} Simulated data, no scanner connected",
                               systemImage: "play.rectangle.fill")
                             .font(.subheadline.weight(.semibold))
                             .foregroundStyle(.orange)
                             .padding(14).frame(maxWidth: .infinity, alignment: .leading)
                             .background(panel, in: RoundedRectangle(cornerRadius: 12))
                     }
-                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 220), spacing: 16)], spacing: 16) {
-                        Dial(title: "ENGINE SPEED", reading: model.gauge(0x0c), unit: "rpm",
-                             lower: 0, upper: 8000, accent: mint)
-                        Dial(title: "VEHICLE SPEED", reading: model.gauge(0x0d), unit: "km/h",
-                             lower: 0, upper: 240, accent: .cyan)
-                        Dial(title: "COOLANT", reading: model.gauge(0x05), unit: "Â°C",
-                             lower: -40, upper: 160, accent: .orange)
+                    ViewThatFits(in: .horizontal) {
+                        HStack(spacing: 16) { gaugeCards }
+                        VStack(spacing: 16) { gaugeCards }
                     }
                     HStack {
                         VStack(alignment: .leading, spacing: 5) {
                             Text("All PIDs").font(.title2.bold())
-                            Text("\(model.rows.count) supported or observed Â· \(model.received) records")
+                            Text("\(model.rows.count) supported or observed \u{b7} \(model.received) records")
                                 .font(.subheadline).foregroundStyle(.secondary)
                         }
                         Spacer()
@@ -110,6 +106,16 @@ struct DashboardView: View {
             }
         }
     }
+    @ViewBuilder
+    private var gaugeCards: some View {
+                        Dial(title: "ENGINE SPEED", reading: model.gauge(0x0c), unit: "rpm",
+                             lower: 0, upper: 8000, accent: mint)
+                        Dial(title: "VEHICLE SPEED", reading: model.gauge(0x0d), unit: "km/h",
+                             lower: 0, upper: 240, accent: .cyan)
+                        Dial(title: "COOLANT", reading: model.gauge(0x05), unit: "\u{b0}C",
+                             lower: -40, upper: 160, accent: .orange)
+    }
+
     private var header: some View {
         HStack(alignment: .center, spacing: 12) {
             Image(systemName: "car.side.fill").font(.title2).foregroundStyle(mint)
@@ -151,7 +157,7 @@ private struct Dial: View {
                     .stroke(accent, style: StrokeStyle(lineWidth: 11, lineCap: .round))
                     .rotationEffect(.degrees(135))
                 VStack(spacing: 4) {
-                    Text(reading.map { String(format: "%.0f", $0.value) } ?? "â€”")
+                    Text(reading.map { String(format: "%.0f", $0.value) } ?? "\u{2014}")
                         .font(.system(size: 42, weight: .semibold, design: .rounded))
                         .monospacedDigit().minimumScaleFactor(0.6).lineLimit(1)
                     Text(unit).font(.subheadline).foregroundStyle(.secondary)
@@ -166,7 +172,7 @@ private struct Dial: View {
             }
             .font(.caption.monospaced()).foregroundStyle(.secondary)
         }
-        .padding(24).frame(maxWidth: .infinity)
+        .padding(24).frame(minWidth: 224, maxWidth: .infinity)
         .background(panel, in: RoundedRectangle(cornerRadius: 18))
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(title)
@@ -186,7 +192,7 @@ private struct PIDRowView: View {
     var body: some View {
         DisclosureGroup {
             VStack(alignment: .leading, spacing: 8) {
-                Text("Raw bytes: " + (row.raw.isEmpty ? "â€”" : row.raw))
+                Text("Raw bytes: " + (row.raw.isEmpty ? "\u{2014}" : row.raw))
                     .font(.caption.monospaced()).textSelection(.enabled)
                 if let timestamp = row.deviceTimestamp {
                     Text("Device uptime: \(timestamp) ms").font(.caption).foregroundStyle(.secondary)
@@ -209,7 +215,7 @@ private struct PIDRowView: View {
                 }
                 Spacer()
                 VStack(alignment: .trailing, spacing: 5) {
-                    Text(row.reading?.text ?? (row.status == 0 ? "Raw data" : "â€”"))
+                    Text(row.reading?.text ?? (row.status == 0 ? "Raw data" : "\u{2014}"))
                         .font(.system(.body, design: .monospaced).weight(.semibold))
                     if let received = row.receivedAt {
                         Text("\(max(0, Int(now.timeIntervalSince(received))))s ago")

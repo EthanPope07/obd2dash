@@ -13,6 +13,8 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+      - name: Check display text encoding
+        run: python3 ipad/scripts/check_text_encoding.py
       - name: Test protocol and PID core
         run: swift test --package-path ipad/OBDCore
       - name: Build iPad simulator app

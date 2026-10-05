@@ -124,7 +124,7 @@ final class DashboardModel: NSObject, ObservableObject, CBCentralManagerDelegate
         let job = DispatchWorkItem { [weak self] in
             guard let self, !self.demo, self.active, self.peripheral == nil else { return }
             self.central.stopScan()
-            self.connection = "Device not found Â· retrying"
+            self.connection = "Device not found · retrying"
             self.scheduleScan()
         }
         deadline = job
@@ -161,7 +161,7 @@ final class DashboardModel: NSObject, ObservableObject, CBCentralManagerDelegate
         let id = found.identifier
         let job = DispatchWorkItem { [weak self] in
             guard let self, self.peripheral?.identifier == id, !self.streaming else { return }
-            self.fail("Connection timed out Â· retrying")
+            self.fail("Connection timed out · retrying")
         }
         deadline = job
         DispatchQueue.main.asyncAfter(deadline: .now()+15, execute: job)
@@ -177,11 +177,11 @@ final class DashboardModel: NSObject, ObservableObject, CBCentralManagerDelegate
     }
     func centralManager(_ central: CBCentralManager, didFailToConnect p: CBPeripheral, error: Error?) {
         guard peripheral?.identifier == p.identifier else { return }
-        fail("Connection failed Â· retrying")
+        fail("Connection failed · retrying")
     }
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral p: CBPeripheral, error: Error?) {
         guard peripheral?.identifier == p.identifier else { return }
-        fail("Disconnected Â· reconnecting")
+        fail("Disconnected · reconnecting")
     }
     func peripheral(_ p: CBPeripheral, didDiscoverServices error: Error?) {
         guard peripheral?.identifier == p.identifier else { return }
@@ -201,7 +201,7 @@ final class DashboardModel: NSObject, ObservableObject, CBCentralManagerDelegate
     }
     func peripheral(_ p: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
         guard peripheral?.identifier == p.identifier, characteristic.uuid == Self.stream else { return }
-        guard error == nil, characteristic.isNotifying else { fail("Subscription failed Â· retrying"); return }
+        guard error == nil, characteristic.isNotifying else { fail("Subscription failed · retrying"); return }
         deadline?.cancel(); streaming = true; connection = "Connected"
         UserDefaults.standard.set(p.identifier.uuidString, forKey: rememberedKey)
     }
@@ -225,7 +225,7 @@ final class DashboardModel: NSObject, ObservableObject, CBCentralManagerDelegate
         if !store.discovery.isEmpty {
             discovery = store.discovery.keys.sorted().map {
                 String(format: "%03X", Int($0)) + ": " + (store.discovery[$0] ?? "")
-            }.joined(separator: " Â· ")
+            }.joined(separator: " · ")
         }
     }
     func gauge(_ pid: UInt8) -> Reading? {
